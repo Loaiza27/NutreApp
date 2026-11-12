@@ -2,11 +2,33 @@ package com.example.NutreApp.models;
 import java.util.UUID;
 import com.example.NutreApp.models.helpers.Categoria;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity 
+@Table (name = "videos")
 public class Video {
+    @Id 
+    @GeneratedValue (strategy = GenerationType.UUID )
     private UUID id;
+
+    @Column (name = "titulo", nullable = false, unique = false, length = 100)
     private String titulo;
+
+    @Column (name ="descripcion", nullable = false, unique = false, length = 200)
     private String descripcion;
+
+    @Column (name = "url", nullable = false, unique = true, length = 500)
     private String url;
+
+    @Enumerated (EnumType.STRING)
+    @Column (name = "categoria", nullable = false, unique = false)
+    
     private Categoria categoria;
     public Video() {
     }
